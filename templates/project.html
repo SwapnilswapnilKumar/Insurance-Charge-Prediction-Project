@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Prediction</title>
+    <link rel="stylesheet" href="projectstyle.css">
+    <style>body {
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(135deg, #e2e2e2, #d6e4f8);
+        color: #333;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    
+    h2 {
+        text-align: center;
+        color: #00796b;
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+    
+    form {
+        background: linear-gradient(150deg, #ffffff, #80a3d4);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 350px;
+        box-sizing: border-box;
+        margin: 0 auto;
+    }
+    
+    form label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: #00796b;
+    }
+    
+    form select,
+    form input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #b2dfdb;
+        border-radius: 5px;
+        box-sizing: border-box;
+        background-color: #f1f8e9;
+        font-size: 1em;
+    }
+    
+    form button {
+        background-color: #00796b;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        font-size: 1.2em;
+        cursor: pointer;
+        border-radius: 5px;
+        width: 100%;
+        box-sizing: border-box;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    
+    form button:hover {
+        background-color: #004d40;
+        transform: translateY(-2px);
+    }
+    
+    hr {
+        border: 1px solid #b2dfdb;
+        margin-bottom: 20px;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        h2 {
+            font-size: 1.5em;
+        }
+    
+        form {
+            padding: 20px;
+            width: 90%;
+        }
+    
+        form button {
+            font-size: 1em;
+            padding: 10px 18px;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        h2 {
+            font-size: 1.2em;
+        }
+    
+        form {
+            padding: 15px;
+            width: 95%;
+        }
+    
+        form button {
+            font-size: 0.9em;
+            padding: 8px 16px;
+        }
+    }
+    </style>
+</head>
+<body>
+   
+    
+    <form action="{{ url_for('predict') }}" method="post">   
+        <label for="region">Region:</label>
+        <select name="region" id="region">
+            <option value="se">Southeast</option>
+            <option value="sw">Southwest</option>
+            <option value="ne">Northeast</option>
+            <option value="nw">Northwest</option>
+        </select>
+
+        <label for="children">Children:</label>
+        <select name="children" id="children">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+
+        <label for="health">Health:</label>
+        <select name="health" id="health">
+            <option value="1">Underweight</option>
+            <option value="2">Healthy weight</option>
+            <option value="3">Overweight</option>
+            <option value="4">Obese</option>
+        </select>
+
+        <label for="smoker">Smoker:</label>
+        <select name="smoker" id="smoker">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+
+        <label for="gender">Gender:</label>
+        <select name="gender" id="gender">
+            <option value="0">Female</option>
+            <option value="1">Male</option>
+        </select>
+
+        <label for="bmi">BMI:</label>
+        <input type="text" name="bmi" id="bmi" required>
+
+        <label for="age">Age:</label>
+        <input type="text" placeholder="Your age, please..." name="age" id="age" required>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
